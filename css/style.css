@@ -60,8 +60,7 @@ body {
   max-width: 100%;
   height: auto; /* Ensure aspect ratio is maintained */
   border-radius: 0.5rem;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   max-height: 250px; /* Increased max-height for better visibility */
 }
 
@@ -101,4 +100,10 @@ body {
 }
 #customAlert .hidden {
   display: none;
-}/*# sourceMappingURL=style.css.map */
+}
+
+.hidden {
+  display: none;
+}
+
+/*# sourceMappingURL=style.css.map */
