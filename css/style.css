@@ -99,11 +99,6 @@ body {
   width: 90%;
   max-width: 400px;
 }
-
-/*
-  Generic utility class for hiding elements.
-  Used by script.js to toggle visibility of the alert, spinner, and images.
-*/
-.hidden {
+#customAlert .hidden {
   display: none;
 }/*# sourceMappingURL=style.css.map */
