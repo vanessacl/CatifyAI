@@ -25,7 +25,7 @@ export async function handler(event) {
     // --- Step 1: Call Gemini to get the scene description ---
     const geminiPrompt =
       "Provide an extremely detailed and precise description of this image, focusing on all visual elements. This includes: 1. The overall scene, environment, static objects, vehicles, background, foreground, lighting conditions, time of day, and the *exact* camera angle/point of view (e.g., 'from the passenger seat looking towards the driver's side'). 2. For any figures present, describe their *exact* posture, body language, precise position relative to the scene and other objects, ANY GESTURES (like a finger to the mouth for 'shhh'), AND THEIR BODY TYPE/BUILD (e.g., 'fat build', 'skinny build', 'muscular build', 'average build'). Also, provide an exhaustive, pixel-level list of all clothing details and accessories worn (colors, patterns, specific garment types like 'denim jacket', 'striped t-shirt', 'aviator sunglasses', 'baseball cap', 'glasses', 'watch', fabric textures, how clothes fit). Do NOT mention their species or specific roles; focus purely on a visual forensic analysis of their appearance, exact actions, posture, body type, and placement."
-    const geminiApiUrl = `https://generativelanguage.googleapis.com/v1/models/${geminiModel}:generateContent?key=${apiKey}`
+    const geminiApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${geminiModel}:generateContent?key=${apiKey}`
     const geminiPayload = {
       contents: [
         {
