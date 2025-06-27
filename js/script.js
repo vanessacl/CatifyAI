@@ -22,12 +22,24 @@ function showAlert(message) {
 // Close custom alert modal
 alertCloseButton.addEventListener('click', () => {
   customAlert.classList.add('hidden')
+  console.log('clicking clicking')
 })
 
 // Handle image upload
 imageUpload.addEventListener('change', (event) => {
   const file = event.target.files[0]
   if (file) {
+    // Netlify functions have a 6MB payload limit. Base64 encoding increases
+    // file size by ~33%, so we'll set a client-side limit of 4MB to be safe.
+    const MAX_SIZE_MB = 4
+    if (file.size > MAX_SIZE_MB * 1024 * 1024) {
+      showAlert(
+        `Image is too large. Please select a file smaller than ${MAX_SIZE_MB}MB.`
+      )
+      // Reset the input so the user can select a different file
+      imageUpload.value = ''
+      return
+    }
     const reader = new FileReader()
     reader.onload = (e) => {
       uploadedImagePreview.src = e.target.result
@@ -74,15 +86,23 @@ catifyButton.addEventListener('click', async () => {
       }),
     })
 
-    const result = await response.json()
-
     if (!response.ok) {
-      // Use the error message from the serverless function if available
-      throw new Error(
-        result.error || `Request failed with status ${response.status}`
-      )
+      // If the response is not OK, it might not be JSON.
+      // We try to parse it as JSON, but fall back to status text if that fails.
+      let errorMessage = `Request failed: ${response.status} ${response.statusText}`
+      try {
+        const errorResult = await response.json()
+        // Use the specific error from the server if available
+        errorMessage = errorResult.error || errorMessage
+      } catch (e) {
+        // The error response wasn't JSON. The server might have crashed.
+        console.error('Could not parse error response as JSON.')
+      }
+      throw new Error(errorMessage)
     }
 
+    // If we get here, the response was successful and we can safely parse the body.
+    const result = await response.json()
     if (result.imageBase64) {
       const imageUrl = `data:image/png;base64,${result.imageBase64}`
       catifiedImage.src = imageUrl

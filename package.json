@@ -4,9 +4,14 @@
   "description": "An app to turn humans in pictures into cats.",
   "main": "script.js",
   "scripts": {
+    "build:css": "sass css/style.scss:css/style.css",
+    "build": "npm run build:css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": ["catify", "netlify", "google-ai"],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.77.0"
+  }
 }
