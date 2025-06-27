@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catify Image</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">Catify Your Picture</h1>
+        <p class="text-base sm:text-lg text-gray-600 mb-6">Upload an image and watch the humans transform into feline friends!</p>
+
+        <input type="file" id="imageUpload" accept="image/*" class="mb-4 p-2 border border-gray-300 rounded-lg w-full sm:max-w-xs cursor-pointer text-sm sm:text-base">
+
+        <button id="catifyButton" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 text-base sm:text-lg">
+            Catify Image
+        </button>
+
+        <div class="image-display-area">
+            <div class="image-box">
+                <h3 class="text-md sm:text-lg font-semibold text-gray-700 mb-2">Original Image</h3>
+                <img id="uploadedImagePreview" src="https://placehold.co/250x200/e2e8f0/64748b?text=Upload+Image" alt="Uploaded Image Preview" class="mb-2">
+            </div>
+
+            <div class="image-box">
+                <h3 class="text-md sm:text-lg font-semibold text-gray-700 mb-2">Catified Image</h3>
+                <div id="catifiedImageWrapper" class="flex justify-center items-center h-full w-full">
+                    <div id="loading" class="loading-spinner hidden"></div>
+                    <img id="catifiedImage" src="https://placehold.co/250x200/e2e8f0/64748b?text=Catified+Image" alt="Catified Image" class="hidden">
+                </div>
+            </div>
+        </div>
+        
+        <button id="saveImageButton" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105 mt-6 text-base sm:text-lg hidden">
+            Download Catified Image
+        </button>
+    </div>
+
+    <!-- Custom Alert Modal -->
+    <div id="customAlert" class="fixed inset-0 hidden flex justify-center items-center z-50">
+        <div class="bg-white p-6 rounded-lg shadow-xl text-center">
+            <p id="alertMessage" class="text-lg font-semibold text-gray-800 mb-4"></p>
+            <button id="alertCloseButton" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">OK</button>
+        </div>
+    </div>
+
+    <!-- Link to external JavaScript file -->
+    <script src="/js/script.js" type="module" defer></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    flex-direction: column;
+    padding: 1rem; /* Add some padding for smaller screens */
+}
+.container {
+    background-color: #ffffff;
+    padding: 1.5rem; /* Adjusted padding for responsiveness */
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%; /* Full width on small screens */
+    max-width: 700px; /* Increased max-width for better desktop layout */
+    margin: 0 auto; /* Center container */
+}
+.image-display-area {
+    display: flex;
+    flex-direction: column; /* Stack vertically by default for mobile */
+    justify-content: center; /* Center items when stacked */
+    align-items: center; /* Center items when stacked */
+    gap: 1.5rem; /* Increased gap */
+    margin-top: 1.5rem;
+}
+@media (min-width: 640px) { /* sm breakpoint */
+    .image-display-area {
+        flex-direction: row; /* Side-by-side on larger screens */
+        flex-wrap: nowrap; /* Prevent wrapping on larger screens */
+        justify-content: space-around;
+    }
+}
+.image-box {
+    flex: 1 1 100%; /* Full width on mobile */
+    max-width: 100%; /* Ensure it doesn't overflow */
+    background-color: #e2e8f0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    position: relative;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+    padding: 1rem;
+    flex-direction: column;
+}
+@media (min-width: 640px) { /* sm breakpoint */
+    .image-box {
+        flex: 1 1 48%; /* Roughly half width on larger screens, with gap */
+        max-width: 48%; /* Adjust max-width to account for gap */
+    }
+}
+.image-box img {
+    max-width: 100%;
+    height: auto; /* Ensure aspect ratio is maintained */
+    border-radius: 0.5rem;
+    object-fit: contain;
+    max-height: 250px; /* Increased max-height for better visibility */
+}
+.loading-spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #3b82f6;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* Custom Alert Modal Styles */
+#customAlert {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 9999; /* Ensure it's on top */
+    position: fixed; /* Use fixed for full overlay */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#customAlert > div {
+    width: 90%;
+    max-width: 400px;
+}

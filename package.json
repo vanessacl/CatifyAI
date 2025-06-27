@@ -1,0 +1,12 @@
+{
+  "name": "catify-app",
+  "version": "1.0.0",
+  "description": "An app to turn humans in pictures into cats.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["catify", "netlify", "google-ai"],
+  "author": "",
+  "license": "ISC"
+}
